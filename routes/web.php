@@ -53,7 +53,7 @@ Route::post('insert', function(Request $request){
 
     $nuevoLibro->save();
 
-    return back()->with('Mensaje', 'Nota Agregada');
+    return back()->with('Mensaje', 'Libro Agregado');
 
 
 });
