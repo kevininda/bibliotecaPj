@@ -42,6 +42,21 @@ Route::get('libros', function () {
     return  view('libros', compact('libros','autores'));
 });
 
+Route::post('insert', function(Request $request){
+    $nuevoLibro = new App\Libro;
+
+    $nuevoLibro->nombre = $request->nombre;
+    $nuevoLibro->idIsbn = $request->idIsbn;
+    $nuevoLibro->anio = $request->anio;
+    $nuevoLibro->idAutor = $request->idAutor;
+    $nuevoLibro->estado = 1;
+
+    $nuevoLibro->save();
+
+    return back()->with('Mensaje', 'Nota Agregada');
+
+
+});
 
 Route::get('usuarios', function () {
     $usuarios = App\Usuario::all();

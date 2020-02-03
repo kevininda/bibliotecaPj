@@ -32,7 +32,7 @@
           @foreach ($autores as $item2)
             
             @if ($item->idAutor == $item2->id)
-                <td>{{$item2->nombre}}</td>
+                <td>{{$item2->nombre}} {{$item2->apellido}}</td>
             @endif
             
           @endforeach
