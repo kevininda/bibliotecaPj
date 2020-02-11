@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,28 +36,9 @@ Route::get('menu', function () {
     return view('menu');
 });
 
-Route::get('libros', function () {
-    $libros = App\Libro::all();
-    $autores = App\Autor::all();
-    
-    return  view('libros', compact('libros','autores'));
-});
+Route::get('libros', 'LibroController@libros');
 
-Route::post('insert', function(Request $request){
-    $nuevoLibro = new App\Libro;
-
-    $nuevoLibro->nombre = $request->nombre;
-    $nuevoLibro->idIsbn = $request->idIsbn;
-    $nuevoLibro->anio = $request->anio;
-    $nuevoLibro->idAutor = $request->idAutor;
-    $nuevoLibro->estado = 1;
-
-    $nuevoLibro->save();
-
-    return back()->with('Mensaje', 'Libro Agregado');
-
-
-});
+Route::post('insert', 'LibroController@nuevoLibro');
 
 Route::get('usuarios', function () {
     $usuarios = App\Usuario::all();
