@@ -8,7 +8,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+            <form method="POST" action="{{ route('libro.crear') }}">
+              @csrf
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nombre">Nombre</label>
@@ -17,6 +18,10 @@
                       <div class="form-group col-md-6">
                         <label for="codigo">Codigo ISBN</label>
                         <input type="text" class="form-control" name="idIsbn" placeholder="Codigo">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="anio">Año</label>
+                        <input type="text" class="form-control" name="anio" placeholder="Año">
                       </div>
                     </div>
                     <div class="form-group">
@@ -30,15 +35,12 @@
                         
                     </div>
 
-                      <input type="submit" class="btn btn-primary" value="Nevo Autor">
+                      <input type="submit" class="btn btn-primary" value="Nuevo Autor">
 
                     </div>
-                    
+                    <input type="submit" class="btn btn-primary" value="Agregar">
                   </form>
-            </div>
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" value="Agregar">
-            </div>
+            
         </div>
     </div>
 </div>

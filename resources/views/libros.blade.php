@@ -16,7 +16,7 @@
     <table id="table_id" class="display">
       <thead>
         <tr>
-          <th scope="col">#id</th>
+          <th scope="col">ISBN</th>
           <th scope="col">Nombre</th>
           <th scope="col">Autor</th>
           <th scope="col">Año</th>
@@ -26,7 +26,7 @@
       <tbody>
       @foreach($libros as $item)
         <tr>
-          <th scope="row">{{$item->id}}</th>
+          <th scope="row">{{$item->idIsbn}}</th>
           <td>{{$item->nombre}}</td>
 
           @foreach ($autores as $item2)

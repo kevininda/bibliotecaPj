@@ -38,7 +38,7 @@ Route::get('menu', function () {
 
 Route::get('libros', 'LibroController@libros');
 
-Route::post('insert', 'LibroController@nuevoLibro');
+Route::post('insert', 'LibroController@nuevoLibro')->name('libro.crear');
 
 Route::get('usuarios', function () {
     $usuarios = App\Usuario::all();

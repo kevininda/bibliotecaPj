@@ -29,17 +29,17 @@ class LibroController extends Controller
     }
 
     public function nuevoLibro(Request $request){
-        $nuevoLibro = new App\Libro;
-
+        $nuevoLibro = new Libro;
+        
         $nuevoLibro->nombre = $request->nombre;
         $nuevoLibro->idIsbn = $request->idIsbn;
         $nuevoLibro->anio = $request->anio;
-        $nuevoLibro->idAutor = $request->idAutor;
+        $nuevoLibro->idAutor = 3;
         $nuevoLibro->estado = 1;
 
         $nuevoLibro->save();
 
-        return back()->with('Mensaje', 'Libro Agregado');
+        libros();
 
     }
 
