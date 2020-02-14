@@ -12,7 +12,7 @@
       </style>
     
   <div class="container">
-    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#addLibro" >Agregar libro</button>  
+    
     <table id="table_id" class="display">
       <thead>
         <tr>
@@ -36,8 +36,6 @@
             @endif
             
           @endforeach
-            
-
 
           <td>{{$item->anio}}</td>
           @if ($item->estado == 1)
@@ -51,6 +49,7 @@
         </tr>
       </tbody>
     </table>
+    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#addLibro" >Agregar libro</button>  
     @include('addLibro')
   </div>    
 @extends('footer')

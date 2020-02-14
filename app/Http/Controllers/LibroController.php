@@ -21,9 +21,9 @@ class LibroController extends Controller
     public function libros(){
         //$libros = App\Libro::all();
 
-        $libros = LIbro::orderBy('anio', 'DESC')->paginate(5);
+        $libros = Libro::orderBy('anio', 'DESC')->paginate(10);
 
-        $autores = Autor::orderBy('nombre', 'DESC')->paginate(5);
+        $autores = Autor::orderBy('nombre', 'DESC')->paginate(10);
         
         return  view('libros', compact('libros','autores'));
     }
@@ -34,13 +34,23 @@ class LibroController extends Controller
         $nuevoLibro->nombre = $request->nombre;
         $nuevoLibro->idIsbn = $request->idIsbn;
         $nuevoLibro->anio = $request->anio;
-        $nuevoLibro->idAutor = 3;
+        $nuevoLibro->idAutor = 3;           //ARREGLAR ESTO
         $nuevoLibro->estado = 1;
 
         $nuevoLibro->save();
 
-        libros();
+        return back()->with('mensaje', 'Libro Agregado!');
 
+    }
+
+    public function actualizar(Request $request){
+
+        $libroactualizado = Libro::find($id);
+        $libroactualizado->nombre = $request->nombre;
+        $libroactualizado->anio = $request->anio;
+        $libroactualizado->
+        $libroactualizado->save();
+        return back()->with('mensaje', 'Nota editada!');
     }
 
     /**
