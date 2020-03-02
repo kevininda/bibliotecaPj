@@ -34,9 +34,12 @@ class LibroController extends Controller
         $nuevoLibro->nombre = $request->nombre;
         $nuevoLibro->idIsbn = $request->idIsbn;
         $nuevoLibro->anio = $request->anio;
-        $nuevoLibro->idAutor = 3;           //ARREGLAR ESTO
         $nuevoLibro->estado = 1;
 
+        $idAutorConsulta = Autor::select('id')->where('nombre', 'Luis')->first();
+        $idAutor = $idAutorConsulta['id'];
+        
+        $nuevoLibro->idAutor = $idAutor;          
         $nuevoLibro->save();
 
         return back()->with('mensaje', 'Libro Agregado!');
@@ -50,7 +53,7 @@ class LibroController extends Controller
         $libroactualizado->anio = $request->anio;
         $libroactualizado->
         $libroactualizado->save();
-        return back()->with('mensaje', 'Nota editada!');
+        return back()->with('mensaje', 'Libro editado!');
     }
 
     /**
