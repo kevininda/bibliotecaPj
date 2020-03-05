@@ -40,7 +40,9 @@ Route::get('libros', 'LibroController@libros');
 
 Route::post('insert', 'LibroController@nuevoLibro')->name('libro.crear');
 
-Route::post('actualizar', 'LibroController@actualizar')->name('libro.actualizar');
+Route::post('actualizar', 'LibroController@actualizarLibro')->name('libro.actualizarLibro');
+
+Route::post('actualizar', 'LibroController@actualizarAutor')->name('libro.actualizarAutor');
 
 
 Route::get('usuarios', function () {

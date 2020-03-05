@@ -36,7 +36,7 @@ class LibroController extends Controller
         $nuevoLibro->anio = $request->anio;
         $nuevoLibro->estado = 1;
 
-        $idAutorConsulta = Autor::select('id')->where('nombre', 'Luis')->first();
+        $idAutorConsulta = Autor::select('id')->where('nombre', 'Roberto')->first();
         $idAutor = $idAutorConsulta['id'];
         
         $nuevoLibro->idAutor = $idAutor;          
@@ -46,14 +46,35 @@ class LibroController extends Controller
 
     }
 
-    public function actualizar(Request $request){
+    public function actualizarLibro(Request $request){
 
         $libroactualizado = Libro::find($id);
         $libroactualizado->nombre = $request->nombre;
         $libroactualizado->anio = $request->anio;
-        $libroactualizado->
+        $libroactualizado->idAutor = $request->idAutor;
         $libroactualizado->save();
         return back()->with('mensaje', 'Libro editado!');
+    }
+
+    public function nuevoAutor(Request $request){
+        $autorNuevo = new Autor;
+
+        $autorNuevo->nombre = $request->nombre;
+        $autorNuevo->apellido = $request->apellido;
+
+        $autorNuevo->save();
+
+        return back()->with('mensaje', 'Autor Agregado!');
+    }
+
+    public function actualizarAutor(Request $request){
+
+        $autorActualizado = Libro::find($id);
+        $autorActualizado->nombre = $request->nombre;
+        $autorActualizado->apellido = $request->apellido;
+
+        $autorActualizado->save();
+        return back()->with('mensaje', 'Autor editado!');
     }
 
     /**
