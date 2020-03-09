@@ -15,20 +15,21 @@ class LibroController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    public function libros(){
-        //$libros = App\Libro::all();
-
         $libros = Libro::orderBy('anio', 'DESC')->paginate(10);
 
         $autores = Autor::orderBy('nombre', 'DESC')->paginate(10);
         
-        return  view('libros', compact('libros','autores'));
+        return  view('libros', compact('libros','autores')); 
     }
 
-    public function nuevoLibro(Request $request){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
         $nuevoLibro = new Libro;
         
         $nuevoLibro->nombre = $request->nombre;
@@ -43,8 +44,8 @@ class LibroController extends Controller
         $nuevoLibro->save();
 
         return back()->with('mensaje', 'Libro Agregado!');
-
     }
+    
 
     public function actualizarLibro(Request $request){
 
@@ -77,15 +78,8 @@ class LibroController extends Controller
         return back()->with('mensaje', 'Autor editado!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
+    
 
     /**
      * Store a newly created resource in storage.

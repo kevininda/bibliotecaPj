@@ -36,9 +36,9 @@ Route::get('menu', function () {
     return view('menu');
 });
 
-Route::get('libros', 'LibroController@libros');
+Route::get('libros', 'LibroController@index');
 
-Route::post('insert', 'LibroController@nuevoLibro')->name('libro.crear');
+Route::post('insert', 'LibroController@create')->name('libro.crear');
 
 Route::post('actualizar', 'LibroController@actualizarLibro')->name('libro.actualizarLibro');
 
