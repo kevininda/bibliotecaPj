@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Libro;
-use App\Autor;
 
-class LibroController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,37 +13,32 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::all();
+        $usuarios = User::all();
 
-        $autores = Autor::all();
-        
-        return  view('libros', compact('libros','autores')); 
+        //aca retornar la vista de los uruarios   return  view('libros', compact('libros','autores')); 
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
     {
-        $nuevoLibro = new Libro;
-        
-        $nuevoLibro->nombre = $request->nombre;
-        $nuevoLibro->idIsbn = $request->idIsbn;
-        $nuevoLibro->anio = $request->anio;
-        $nuevoLibro->estado = 1;
+        $nuevoUsuario = new User();
 
-        $idAutorConsulta = Autor::select('id')->where('nombre', 'Roberto')->first();
-        $idAutor = $idAutorConsulta['id'];
-        
-        $nuevoLibro->idAutor = $idAutor;          
-        $nuevoLibro->save();
+        $nuevoUsuario->nombre = $request->nombre;
+        $nuevoUsuario->apellido = $request->apellido;
+        $nuevoUsuario->direccion = $request->direccion;
+        $nuevoUsuario->telefono = $request->telefono;
+        $nuevoUsuario->dni = $request->dni;
 
-        return back()->with('mensaje', 'Libro Agregado!');
+        $nuevoUsuario->save();
+
+        
+
+
     }
-            
 
     /**
      * Store a newly created resource in storage.
@@ -70,21 +63,14 @@ class LibroController extends Controller
     }
 
     /**
-     * Edit and store the specified resource.
+     * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, int $id)
+    public function edit($id)
     {
-        $libroActualizado = Libro::find($id);
-        $libroActualizado->nombre = $request->nombre;
-        $libroActualizado->anio = $request->anio;
-        $libroActualizado->idAutor = $request->idAutor;
-
-        $libroActualizado->save();
-        
-        return back()->with('mensaje', 'Libro editado!');
+        //
     }
 
     /**

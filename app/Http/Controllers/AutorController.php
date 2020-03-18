@@ -13,7 +13,7 @@ class AutorController extends Controller
      */
     public function index()
     {
-        $autores = Autor::orderBy('nombre', 'DESC')->paginate(10);
+        $autores = Autor::all();
         
         return  view('autores', compact('autores')); 
     }
@@ -23,9 +23,16 @@ class AutorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $autorNuevo = new Autor;
+
+        $autorNuevo->nombre = $request->nombre;
+        $autorNuevo->apellido = $request->apellido;
+
+        $autorNuevo->save();
+
+        return back()->with('mensaje', 'Autor Agregado!');
     }
 
     /**
@@ -51,14 +58,19 @@ class AutorController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edita registro pasado por request
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $autorActualizado = Libro::find($request->id);
+        $autorActualizado->nombre = $request->nombre;
+        $autorActualizado->apellido = $request->apellido;
+
+        $autorActualizado->save();
+        return back()->with('mensaje', 'Autor editado!');
     }
 
     /**

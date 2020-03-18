@@ -23,6 +23,7 @@
           <th scope="col">Estado</th>
         </tr>
       </thead>
+      
       <tbody>
       @foreach($libros as $item)
         <tr>
@@ -43,7 +44,7 @@
           @else
           <td>Prestado</td> 
           @endif
-
+          
         </tr>
         @endforeach()
         </tr>
