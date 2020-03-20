@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Libro;
-use App\Autor;
+
 
 class LibroController extends Controller
 {
@@ -28,8 +28,16 @@ class LibroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
+    public function create(Request $request) : string{
+        
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'idIsbn' => 'required|unique:libros',
+            'anio' => 'required|numeric'
+            /*---------------falta validar el idAutor---------------*/
+
+        ]);
+
         $nuevoLibro = new Libro;
         
         $nuevoLibro->nombre = $request->nombre;
@@ -37,13 +45,13 @@ class LibroController extends Controller
         $nuevoLibro->anio = $request->anio;
         $nuevoLibro->estado = 1;
 
-        $idAutorConsulta = Autor::select('id')->where('nombre', 'Roberto')->first();
+        $idAutorConsulta = Autor::select('id')->where('nombre', 'Horacio')->first();
         $idAutor = $idAutorConsulta['id'];
         
         $nuevoLibro->idAutor = $idAutor;          
         $nuevoLibro->save();
 
-        return back()->with('mensaje', 'Libro Agregado!');
+        return "Libro creado";
     }
             
 
@@ -105,8 +113,11 @@ class LibroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) : string
     {
-        //
+        $libro = Libro::findOrFail($id);
+        $libro->delete();
+        return "Libro eliminado correctamente";
+
     }
 }

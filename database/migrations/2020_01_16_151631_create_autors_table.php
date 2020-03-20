@@ -17,6 +17,7 @@ class CreateAutorsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre');
+            $table->string('apellido');
             
         });
     }

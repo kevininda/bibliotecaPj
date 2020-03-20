@@ -25,6 +25,15 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'apellido' => 'required|max:50',
+            'direccion' => 'max:50',
+            'telefono' => 'required|numeric'
+            'dni' => 'required'
+
+        ]);
+
         $nuevoUsuario = new User();
 
         $nuevoUsuario->nombre = $request->nombre;

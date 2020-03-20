@@ -40,9 +40,16 @@ Route::get('libros', 'LibroController@index');
 
 Route::post('insert', 'LibroController@create')->name('libro.crear');
 
-Route::post('actualizar', 'LibroController@actualizarLibro')->name('libro.actualizarLibro');
+Route::post('actualizarLibro', 'LibroController@actualizarLibro')->name('libro.actualizarLibro');
 
-Route::post('actualizar', 'LibroController@actualizarAutor')->name('libro.actualizarAutor');
+Route::delete('eliminarLibro/{id}', 'LibroController@destroy')->name('libro.eliminarLibro');
+
+Route::get('autores', 'AutorController@index');
+
+Route::post('actualizarAutor', 'AutorController@edit')->name('libro.actualizarAutor');
+
+Route::delete('eliminarAutor/{id}', 'AutorController@destroy')->name('autor.eliminarAutor');
+
 
 
 Route::get('usuarios', function () {

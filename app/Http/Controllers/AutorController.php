@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Autor;
 
 class AutorController extends Controller
 {
@@ -25,6 +26,10 @@ class AutorController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'apellido' => 'required|max:50',
+        ]);
         $autorNuevo = new Autor;
 
         $autorNuevo->nombre = $request->nombre;
@@ -63,7 +68,7 @@ class AutorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request) : string
     {
         $autorActualizado = Libro::find($request->id);
         $autorActualizado->nombre = $request->nombre;
@@ -91,8 +96,10 @@ class AutorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) : string
     {
-        //
+        $autor = Autor::findOrFail($id);
+        $autor->delete();
+        return "Autor eliminado con exito.";
     }
 }
