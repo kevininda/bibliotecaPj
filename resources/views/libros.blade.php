@@ -45,7 +45,8 @@
           @else
           <td>Prestado</td> 
           @endif
-          <td><a href="{{ route('libro.editar')}}" class="btn btn-warning btn-sm">Editar</a></td>
+          <td><a href="{{ route('libro.editar')}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+            <a href="{{ route('libro.editar')}}" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></a></td>
         </tr>
         @endforeach()
         </tr>

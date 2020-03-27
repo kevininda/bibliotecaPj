@@ -36,7 +36,7 @@ class LibroController extends Controller
         
         $request->validate([
             'nombre' => 'required|max:50',
-            'idIsbn' => 'required|unique:libros',
+            'id' => 'required|unique:libros',
             'anio' => 'required|numeric'
             /*---------------falta validar el idAutor---------------*/
 
@@ -45,18 +45,18 @@ class LibroController extends Controller
         $nuevoLibro = new Libro;
         
         $nuevoLibro->nombre = $request->nombre;
-        $nuevoLibro->idIsbn = $request->idIsbn;
+        $nuevoLibro->id = $request->id;
         $nuevoLibro->anio = $request->anio;
         $nuevoLibro->estado = 1;
 
-        $idAutorConsulta = Autor::select('id')->where('nombre', 'Luis')->first();
+        $idAutorConsulta = Autor::select('id')->where('nombre', 'Ramiro')->first();
         $idAutor = $idAutorConsulta['id'];
         
         $nuevoLibro->idAutor = $idAutor;          
         $nuevoLibro->save();
 
-        //return "Libro creado";
-        return back()->with('mensaje', 'Libro Agregado!');
+        return "Libro creado";
+        //return back()->with('mensaje', 'Libro Agregado!');
     }
             
 
@@ -80,6 +80,7 @@ class LibroController extends Controller
     public function show($id)
     {
         return Libro::findOrFail($id);
+
     }
 
     /**
@@ -90,6 +91,9 @@ class LibroController extends Controller
      */
     public function edit(Request $request)
     {
+
+        
+
         $libroActualizado = Libro::findOrFail($request->id);
         $libroActualizado->nombre = $request->nombre;
         $libroActualizado->anio = $request->anio;
@@ -119,9 +123,9 @@ class LibroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) : string
+    public function destroy($idIsbn) : string
     {
-        $libro = Libro::findOrFail($id);
+        $libro = Libro::findOrFail($idIsbn);
         $libro->delete();
         return "Libro eliminado correctamente";
 

@@ -45,7 +45,7 @@ Route::post('insert', 'LibroController@create')->name('libro.crear');
 
 Route::put('actualizarLibro', 'LibroController@edit')->name('libro.editar');
 
-Route::delete('eliminarLibro/{id}', 'LibroController@destroy')->name('libro.eliminarLibro');
+Route::delete('destroy/{id}', 'LibroController@destroy')->name('libro.eliminarLibro');
 
 
 //Rutas autor
