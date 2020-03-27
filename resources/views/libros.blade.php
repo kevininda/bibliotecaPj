@@ -21,6 +21,7 @@
           <th scope="col">Autor</th>
           <th scope="col">Año</th>
           <th scope="col">Estado</th>
+          <th scope="col">Accion</th>
         </tr>
       </thead>
       
@@ -44,7 +45,7 @@
           @else
           <td>Prestado</td> 
           @endif
-          
+          <td><a href="{{ route('libro.editar')}}" class="btn btn-warning btn-sm">Editar</a></td>
         </tr>
         @endforeach()
         </tr>

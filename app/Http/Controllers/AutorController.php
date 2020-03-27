@@ -74,12 +74,15 @@ class AutorController extends Controller
      */
     public function edit(Request $request) : string
     {
-        $autorActualizado = Libro::find($request->id);
+        $autorActualizado = Autor::findOrFail($request->id);
         $autorActualizado->nombre = $request->nombre;
         $autorActualizado->apellido = $request->apellido;
 
         $autorActualizado->save();
-        return back()->with('mensaje', 'Autor editado!');
+        
+        return "Autor actualizado";
+        
+        //return back()->with('mensaje', 'Autor editado!');
     }
 
     /**

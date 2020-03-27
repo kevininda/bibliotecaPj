@@ -43,7 +43,7 @@ Route::get('libroPorId/{id}', 'LibroController@show');
 
 Route::post('insert', 'LibroController@create')->name('libro.crear');
 
-Route::post('actualizarLibro', 'LibroController@actualizarLibro')->name('libro.actualizarLibro');
+Route::put('actualizarLibro', 'LibroController@edit')->name('libro.editar');
 
 Route::delete('eliminarLibro/{id}', 'LibroController@destroy')->name('libro.eliminarLibro');
 
@@ -55,7 +55,7 @@ Route::get('autorPorId/{id}', 'AutorController@show');
 
 Route::post('nuevoAutor', 'AutorController@create')->name('autor.crear');
 
-Route::post('actualizarAutor', 'AutorController@edit')->name('libro.actualizarAutor');
+Route::put('actualizarAutor', 'AutorController@edit')->name('autor.editar');
 
 Route::delete('eliminarAutor/{id}', 'AutorController@destroy')->name('autor.eliminarAutor');
 

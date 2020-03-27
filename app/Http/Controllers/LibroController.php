@@ -85,19 +85,20 @@ class LibroController extends Controller
     /**
      * Edit and store the specified resource.
      *
-     * @param  int  $id
+     * @param  request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, int $id)
+    public function edit(Request $request)
     {
-        $libroActualizado = Libro::find($id);
+        $libroActualizado = Libro::findOrFail($request->id);
         $libroActualizado->nombre = $request->nombre;
         $libroActualizado->anio = $request->anio;
         $libroActualizado->idAutor = $request->idAutor;
 
         $libroActualizado->save();
-        
-        return back()->with('mensaje', 'Libro editado!');
+        return "Libro actualizado";
+
+        //return back()->with('mensaje', 'Libro editado!');
     }
 
     /**
