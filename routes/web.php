@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('usuarios', function () {
-    return ('usuarios');
+    return view ('usuarios');
 });
 
 Route::get('footer', function () {
@@ -45,7 +45,9 @@ Route::post('insert', 'LibroController@create')->name('libro.crear');
 
 Route::put('actualizarLibro', 'LibroController@edit')->name('libro.editar');
 
-Route::delete('eliminarLibro/{id}', 'LibroController@destroy')->name('libro.eliminarLibro');
+Route::delete('destroy/{id}', 'LibroController@destroy')->name('libro.eliminarLibro');
+
+//Route::resource('libros','LibroController');
 
 
 //Rutas autor
@@ -59,14 +61,9 @@ Route::put('actualizarAutor', 'AutorController@edit')->name('autor.editar');
 
 Route::delete('eliminarAutor/{id}', 'AutorController@destroy')->name('autor.eliminarAutor');
 
+//Rutas usuarios
+Route::resource('usuarios','UsuarioController');//con este comando creo todas las rutas necesarias para accdeer al controlador de usuarios
 
-
-Route::get('usuarios', function () {
-    $usuarios = App\Usuario::all();
-    
-    return  view('usuarios', compact('usuarios'));
-});
-
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

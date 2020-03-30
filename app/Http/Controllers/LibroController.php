@@ -49,7 +49,7 @@ class LibroController extends Controller
         $nuevoLibro->anio = $request->anio;
         $nuevoLibro->estado = 1;
 
-        $idAutorConsulta = Autor::select('id')->where('nombre', 'Luis')->first();
+        $idAutorConsulta = Autor::select('id')->where('nombre', 'Alejandro')->first();
         $idAutor = $idAutorConsulta['id'];
         
         $nuevoLibro->idAutor = $idAutor;          
@@ -119,9 +119,9 @@ class LibroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) : string
+    public function destroy($idIsbn) : string
     {
-        $libro = Libro::findOrFail($id);
+        $libro = Libro::findOrFail(6);
         $libro->delete();
         return "Libro eliminado correctamente";
 

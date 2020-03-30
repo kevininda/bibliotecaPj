@@ -13,7 +13,7 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="codigo">Codigo ISBN</label>

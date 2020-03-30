@@ -76,3 +76,25 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+// tutorial laravel
+
+instalar composer 
+
+y creo proyecto laravel con el comando composer create-project --prefer-dist laravel/laravel blog
+
+php artisan server para correr el proyecto, no olvidar de correr mysql para levantar la base de datos
+
+creo la base de datos 
+y luego con php artisan migrate creo las migraciones es decir se me crean las tablas en la base de datos
+
+creo las clases del modelo con php artisan:make model Libros -mcr(model, controller y resource)
+
+en el archivo migrations creo el esquema de cada una de mis tablas de la base de datos
+
+php artisan route:list te muestra todas las rutas del proyecto
+
+Route::resource('libros','LibrosController');// este comando me crea todas las rutas para la clase empleados controller
+
+Empleados(modelo)
+empleados(vista)

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Usuario;
 
-class UserController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
-
-        //aca retornar la vista de los uruarios   return  view('libros', compact('libros','autores')); 
+        $datos['usuarios']=Usuario::all();//[usuarios] esta variable es la que voy a usar despues en el foreach de la vista para mostralos en la tabla
+        return view('usuarios',$datos);
     }
 
     /**
@@ -23,30 +23,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $request->validate([
-            'nombre' => 'required|max:50',
-            'apellido' => 'required|max:50',
-            'direccion' => 'max:50',
-            'telefono' => 'required|numeric'
-            'dni' => 'required'
-
-        ]);
-
-        $nuevoUsuario = new User();
-
-        $nuevoUsuario->nombre = $request->nombre;
-        $nuevoUsuario->apellido = $request->apellido;
-        $nuevoUsuario->direccion = $request->direccion;
-        $nuevoUsuario->telefono = $request->telefono;
-        $nuevoUsuario->dni = $request->dni;
-
-        $nuevoUsuario->save();
-
-        
-
-
+        return redirect('usuarios');
     }
 
     /**
@@ -57,7 +36,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosUSuario=request()->all();//se almacena toda la informacion que se envia desde el formulario en la variable
+        
+        $datosUSuario=request()->except('_token');
+
+        Usuario::insert($datosUSuario);
+        
+        //return response()->json($datosUSuario);
+        return redirect('usuarios');
     }
 
     /**
@@ -79,7 +65,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario=Usuario::findOrFail($id);// me devuelve toda la informacion que corresponde a ese id
+        return view('editUser', compact('usuario'));
     }
 
     /**
@@ -92,6 +79,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $datosUsuario=request()->except(['_token','_method']);
+        Usuario::where('id','=',$id)->update($datosUsuario);
+        return redirect('usuarios');
+
     }
 
     /**
@@ -102,6 +93,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Usuario::destroy($id);
+        return redirect('usuarios');
     }
 }

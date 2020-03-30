@@ -22,6 +22,7 @@ class CreateUsuariosTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('dni');
+            $table->string('fechanacimiento');
         });
     }
 

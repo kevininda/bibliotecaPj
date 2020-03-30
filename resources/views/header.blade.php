@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
 
     <title>Biblioteca</title>
@@ -32,10 +32,10 @@
                 <a class="dropdown-item" href="{{url('/actuales')}}">Agregar Libro</a>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+            <li class="">
+              <a class="nav-link" href="{{url('/usuarios')}}" tabindex="-1" aria-disabled="true">Usuarios</a>
             </li>
-            <li class="nav-item">
+            <li class="">
               <a class="nav-link" href="{{url('/login')}}" tabindex="-1" aria-disabled="true">Cerrar Sesion</a>
             </li>
           </ul>
