@@ -46,8 +46,12 @@
           <td>Prestado</td> 
           @endif
           <td><a href="{{ route('libro.editar')}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+<<<<<<< HEAD
             <a href="{{ route('libro.editar')}}" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></a>
           </td>
+=======
+            <a href="{{ route('libro.editar')}}" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></a></td>
+>>>>>>> deb6a71134306940d64bd771dc8c40c605ef8de7
         </tr>
         @endforeach()
         </tr>

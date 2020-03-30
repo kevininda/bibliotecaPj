@@ -17,7 +17,7 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="codigo">Codigo ISBN</label>
-                        <input type="number" class="form-control" name="idIsbn" placeholder="Codigo">
+                        <input type="number" class="form-control" name="id" placeholder="Codigo">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="anio">Año</label>

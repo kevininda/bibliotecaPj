@@ -36,7 +36,7 @@ class LibroController extends Controller
         
         $request->validate([
             'nombre' => 'required|max:50',
-            'idIsbn' => 'required|unique:libros',
+            'id' => 'required|unique:libros',
             'anio' => 'required|numeric'
             /*---------------falta validar el idAutor---------------*/
 
@@ -45,18 +45,22 @@ class LibroController extends Controller
         $nuevoLibro = new Libro;
         
         $nuevoLibro->nombre = $request->nombre;
-        $nuevoLibro->idIsbn = $request->idIsbn;
+        $nuevoLibro->id = $request->id;
         $nuevoLibro->anio = $request->anio;
         $nuevoLibro->estado = 1;
 
+<<<<<<< HEAD
         $idAutorConsulta = Autor::select('id')->where('nombre', 'Alejandro')->first();
+=======
+        $idAutorConsulta = Autor::select('id')->where('nombre', 'Ramiro')->first();
+>>>>>>> deb6a71134306940d64bd771dc8c40c605ef8de7
         $idAutor = $idAutorConsulta['id'];
         
         $nuevoLibro->idAutor = $idAutor;          
         $nuevoLibro->save();
 
-        //return "Libro creado";
-        return back()->with('mensaje', 'Libro Agregado!');
+        return "Libro creado";
+        //return back()->with('mensaje', 'Libro Agregado!');
     }
             
 
@@ -80,6 +84,7 @@ class LibroController extends Controller
     public function show($id)
     {
         return Libro::findOrFail($id);
+
     }
 
     /**
@@ -90,6 +95,9 @@ class LibroController extends Controller
      */
     public function edit(Request $request)
     {
+
+        
+
         $libroActualizado = Libro::findOrFail($request->id);
         $libroActualizado->nombre = $request->nombre;
         $libroActualizado->anio = $request->anio;
@@ -121,7 +129,11 @@ class LibroController extends Controller
      */
     public function destroy($idIsbn) : string
     {
+<<<<<<< HEAD
         $libro = Libro::findOrFail(6);
+=======
+        $libro = Libro::findOrFail($idIsbn);
+>>>>>>> deb6a71134306940d64bd771dc8c40c605ef8de7
         $libro->delete();
         return "Libro eliminado correctamente";
 

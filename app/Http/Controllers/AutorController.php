@@ -31,6 +31,7 @@ class AutorController extends Controller
             'nombre' => 'required|max:50',
             'apellido' => 'required|max:50',
         ]);
+        
         $autorNuevo = new Autor;
 
         $autorNuevo->nombre = $request->nombre;
@@ -74,6 +75,13 @@ class AutorController extends Controller
      */
     public function edit(Request $request) : string
     {
+
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'apellido' => 'required|max:50',
+            'id'=>'required|max:11'
+        ]);
+
         $autorActualizado = Autor::findOrFail($request->id);
         $autorActualizado->nombre = $request->nombre;
         $autorActualizado->apellido = $request->apellido;
